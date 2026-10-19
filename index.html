@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#1b2a4a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<title>Andreas Neunkirch – Streife in Neunkirchhausen</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="game"></canvas>
+
+<div id="hud">
+  <div id="stats" class="panel">
+    <div class="name">ANDREAS NEUNKIRCH</div>
+    <div class="row"><span>Rang</span><b id="hudRank">Polizeianwärter</b></div>
+    <div class="row"><span>XP</span><b id="hudXp">0 / 300</b></div>
+    <div class="bar"><div id="hudXpBar"></div></div>
+    <div class="row"><span>Geld</span><b id="hudMoney">€0</b></div>
+    <div class="row"><span>Ruf</span><b id="hudRep">0</b></div>
+    <div class="bar stamina" title="Ausdauer"><div id="hudStamina"></div></div>
+  </div>
+
+  <div id="mission" class="panel hidden">
+    <div class="label">EINSATZ</div>
+    <div id="missionTitle"></div>
+    <div class="label">ZIEL</div>
+    <div id="missionGoal"></div>
+    <div id="missionProgress" class="bar hidden"><div></div></div>
+    <button id="missionCancel" class="small ghost">Abbrechen</button>
+  </div>
+
+  <div id="radio" class="panel">
+    <div class="label">📻 POLIZEIFUNK</div>
+    <div id="radioLog"></div>
+    <div id="radioOffer" class="hidden">
+      <div id="radioOfferText"></div>
+      <div class="btns">
+        <button id="radioAccept">Annehmen <kbd>R</kbd></button>
+        <button id="radioDecline" class="ghost">Ablehnen</button>
+      </div>
+      <div class="offerbar"><div id="radioOfferBar"></div></div>
+    </div>
+  </div>
+
+  <canvas id="minimap"></canvas>
+  <div id="speedo" class="hidden">0 km/h</div>
+  <div id="hint" class="hidden"></div>
+  <div id="toasts"></div>
+  <button id="btnMenu" class="iconbtn" title="Menü (Esc)">⚙️</button>
+</div>
+
+<div id="touch" class="hidden">
+  <div id="joyZone"><div id="joyBase"><div id="joyKnob"></div></div></div>
+  <div id="touchBtns">
+    <button id="tSprint" data-act="sprint">🏃<span>Sprint</span></button>
+    <button id="tSiren" data-act="siren">🚨<span>Sirene</span></button>
+    <button id="tEnter" data-act="enter">🚓<span id="tEnterLabel">Einsteigen</span></button>
+    <button id="tInteract" data-act="interact">✋<span>Aktion</span></button>
+  </div>
+</div>
+
+<div id="dialog" class="hidden">
+  <div class="dlgBox">
+    <div class="dlgHead"><span id="dlgFace">🙂</span><b id="dlgName"></b></div>
+    <div id="dlgText"></div>
+    <div id="dlgChoices"></div>
+  </div>
+</div>
+
+<div id="station" class="overlay hidden">
+  <div class="stBox">
+    <div class="stHead"><b>🏢 Polizeistation Neunkirchhausen</b><button id="stClose" class="iconbtn dark">✕</button></div>
+    <div id="stTabs"></div>
+    <div id="stBody"></div>
+  </div>
+</div>
+
+<div id="settings" class="overlay hidden">
+  <div class="stBox small">
+    <div class="stHead"><b>⚙️ Menü</b><button id="setClose" class="iconbtn dark">✕</button></div>
+    <div id="setBody"></div>
+  </div>
+</div>
+
+<div id="start" class="overlay">
+  <div class="startBox">
+    <div class="badge">👮</div>
+    <h1>ANDREAS NEUNKIRCH</h1>
+    <p class="sub">Streifendienst in Neunkirchhausen</p>
+    <p id="startSave" class="save"></p>
+    <button id="btnStart" class="big">Dienst antreten</button>
+    <div class="controls">
+      <div><kbd>W A S D</kbd> / <kbd>Pfeile</kbd> Bewegen &amp; Fahren</div>
+      <div><kbd>Shift</kbd> Sprinten</div>
+      <div><kbd>E</kbd> Ein-/Aussteigen</div>
+      <div><kbd>F</kbd> Interagieren</div>
+      <div><kbd>Leertaste</kbd> Sirene &amp; Blaulicht</div>
+      <div><kbd>R</kbd> Funkspruch annehmen</div>
+      <div><kbd>Esc</kbd> Menü</div>
+      <div class="mobileonly">📱 Joystick links, Buttons rechts</div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
